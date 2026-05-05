@@ -12,7 +12,7 @@ namespace BTProx {
          * Set via: gsettings set io.github.eustasy.BluetoothProximityLocker device-address 'XX:XX:XX:XX:XX:XX'
          */
         public string device_address {
-            get { return get_string ("device-address"); }
+            owned get { return get_string ("device-address"); }
             set { set_string ("device-address", value); }
         }
 

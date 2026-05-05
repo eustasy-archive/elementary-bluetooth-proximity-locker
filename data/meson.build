@@ -36,3 +36,9 @@ install_data(
     app_id + '.metainfo.xml',
     install_dir: get_option('datadir') / 'metainfo'
 )
+
+# ── App icon ────────────────────────────────────────────────────────────────
+install_data(
+    app_id + '.svg',
+    install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
+)
