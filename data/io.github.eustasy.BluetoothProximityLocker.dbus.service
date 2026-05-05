@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=io.github.eustasy.BluetoothProximityLocker
+Exec=/app/bin/io.github.eustasy.BluetoothProximityLocker
+SystemdService=io.github.eustasy.BluetoothProximityLocker.service

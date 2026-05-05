@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 
-### Copyright © 2022 [Lewis Goddard](https://lewisgoddard.me.uk/) & [John Watson](mailto:john@watson-net.com)
+### Copyright © 2026 [Lewis Goddard](https://lewisgoddard.me.uk/) & [John Watson](mailto:john@watson-net.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

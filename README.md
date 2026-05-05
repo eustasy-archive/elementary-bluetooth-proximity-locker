@@ -24,5 +24,10 @@ Here's how it works:
 - [x] Fix slow locking on Freya.
 - [x] Fix unlocking not switching to mainscreen.
 - [x] Ignore locking attempts for separate duration after unlock.
-- [ ] FOR RELEASE: Rewrite in Vala.
+- [o] FOR RELEASE: Rewrite in Vala.
 - [ ] FOR RELEASE: Implement plug patch for bluetooth locking in `Security & Privacy` > `Locking`
+
+### Building
+```sh
+flatpak-builder build io.github.eustasy.BluetoothProximityLocker.yml --user --install --force-clean
+```

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.eustasy.BluetoothProximityLocker</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <name>Bluetooth Proximity Locker</name>
+  <summary>Lock your screen when your Bluetooth device leaves range</summary>
+
+  <description>
+    <p>
+      Bluetooth Proximity Locker automatically locks your computer screen
+      when your paired Bluetooth device (such as your phone) moves out of
+      range, and unlocks it when you return.
+    </p>
+    <p>How it works:</p>
+    <ul>
+      <li>Pair your phone or other device with your computer.</li>
+      <li>Configure the device address via GSettings.</li>
+      <li>The daemon monitors the device connection via the BlueZ D-Bus API.</li>
+      <li>Screen locks automatically when the device disconnects.</li>
+      <li>Screen unlocks automatically when the device reconnects.</li>
+    </ul>
+    <p>Features:</p>
+    <ul>
+      <li>No deprecated tools — uses modern BlueZ D-Bus interfaces.</li>
+      <li>No root required — works entirely over D-Bus.</li>
+      <li>Configurable freeze window prevents re-locking immediately after you return.</li>
+      <li>Configurable disconnect delay guards against brief Bluetooth dropouts.</li>
+    </ul>
+  </description>
+
+  <url type="homepage">https://github.com/eustasy-archive/elementary-bluetooth-proximity-locker</url>
+  <url type="bugtracker">https://github.com/eustasy-archive/elementary-bluetooth-proximity-locker/issues</url>
+
+  <developer_name>eustasy</developer_name>
+
+  <releases>
+    <release version="1.0.0" date="2026-05-05">
+      <description>
+        <p>Initial Vala release with reactive BlueZ D-Bus integration, replacing the old Python/l2ping approach.</p>
+      </description>
+    </release>
+  </releases>
+
+  <content_rating type="oars-1.1"/>
+</component>

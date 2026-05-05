@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="io.github.eustasy.BluetoothProximityLocker"
+          path="/io/github/eustasy/BluetoothProximityLocker/">
+
+    <key name="device-address" type="s">
+      <default>''</default>
+      <summary>Bluetooth device address</summary>
+      <description>
+        MAC address of the Bluetooth device to monitor for proximity
+        (e.g. "AA:BB:CC:DD:EE:FF"). The device must be paired before
+        it will be detected.
+        Set with: gsettings set io.github.eustasy.BluetoothProximityLocker device-address 'XX:XX:XX:XX:XX:XX'
+      </description>
+    </key>
+
+    <key name="freeze-time" type="u">
+      <default>60</default>
+      <summary>Re-lock freeze time (seconds)</summary>
+      <description>
+        After unlocking the screen, the session will not be locked again
+        for this many seconds — even if the device goes out of range.
+        This prevents an immediate re-lock when you return to your desk
+        and then step away briefly.
+      </description>
+    </key>
+
+    <key name="disconnect-delay" type="u">
+      <default>3</default>
+      <summary>Disconnect confirmation delay (seconds)</summary>
+      <description>
+        How many seconds the device must remain disconnected before the
+        screen is locked. A small delay guards against brief Bluetooth
+        dropouts triggering an unwanted lock.
+      </description>
+    </key>
+
+  </schema>
+</schemalist>

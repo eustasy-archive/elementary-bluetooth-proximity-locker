@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Bluetooth Proximity Locker
+Comment=Lock your screen when your Bluetooth device leaves range
+Exec=/app/bin/io.github.eustasy.BluetoothProximityLocker
+Icon=io.github.eustasy.BluetoothProximityLocker
+StartupNotify=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+X-GNOME-AutoRestart=false

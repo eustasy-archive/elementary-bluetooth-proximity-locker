@@ -1,0 +1,39 @@
+# This is the same ID used in meson.build and all data files.
+id: io.github.eustasy.BluetoothProximityLocker
+
+# Use the elementary OS Platform and SDK so we get GTK4, Granite, and all
+# elementary libraries pre-bundled without listing every dependency manually.
+runtime: io.elementary.Platform
+runtime-version: '8'
+sdk: io.elementary.Sdk
+
+command: io.github.eustasy.BluetoothProximityLocker
+
+finish-args:
+  # Wayland / X11 rendering (needed if a settings UI is added later)
+  - '--socket=wayland'
+  - '--socket=fallback-x11'
+  - '--share=ipc'
+
+  # ── Bluetooth ─────────────────────────────────────────────────────────────
+  # Talk to BlueZ on the SYSTEM bus to watch device Connected state.
+  - '--system-talk-name=org.bluez'
+
+  # ── Session locking ───────────────────────────────────────────────────────
+  # org.freedesktop.ScreenSaver — primary lock method (session bus)
+  - '--talk-name=org.freedesktop.ScreenSaver'
+
+  # org.freedesktop.login1 — unlock + lock fallback (system bus)
+  - '--system-talk-name=org.freedesktop.login1'
+
+  # ── GSettings / DConf ────────────────────────────────────────────────────
+  - '--metadata=X-DConf=migrate-path=/io/github/eustasy/BluetoothProximityLocker/'
+
+modules:
+  - name: bluetooth-proximity-locker
+    buildsystem: meson
+    config-opts:
+      - '--buildtype=release'
+    sources:
+      - type: dir
+        path: .
