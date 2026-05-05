@@ -14,7 +14,7 @@ Here's how it works:
 1. The script pings the bluetooth device.
 2. When the device moves out of range of the computer, the pings fail and the screen will lock.
 3. Once the device is out of range, the script pings every second attempting to find the device again.
-4. As soon as it pings successfully (you're back in range) the screen will automatically unlock again (WIP).
+4. As soon as it pings successfully (you're back in range) the screen will automatically unlock again.
 
 ### References
 - [BlueProximity](https://launchpad.net/blueproximity)

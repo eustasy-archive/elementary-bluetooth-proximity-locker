@@ -2,7 +2,10 @@
 Type=Application
 Name=Bluetooth Proximity Locker
 Comment=Lock your screen when your Bluetooth device leaves range
-Exec=/app/bin/io.github.eustasy.BluetoothProximityLocker
+# --gapplication-service starts the daemon without calling activate(),
+# so no settings window pops up at login. The user opens the window
+# on demand by launching the app normally.
+Exec=/app/bin/io.github.eustasy.BluetoothProximityLocker --gapplication-service
 Icon=io.github.eustasy.BluetoothProximityLocker
 StartupNotify=false
 NoDisplay=true
