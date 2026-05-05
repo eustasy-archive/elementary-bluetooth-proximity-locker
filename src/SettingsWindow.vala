@@ -262,11 +262,35 @@ namespace BTProx {
                 }
 
             } catch (GLib.Error e) {
-                status_label.label = "Could not query Bluetooth: " + e.message;
+                status_label.label = format_bluetooth_error (e.message);
                 warning ("BlueZ GetManagedObjects failed: %s", e.message);
             }
 
             refresh_button.sensitive = true;
+        }
+
+        /**
+         * Make common BlueZ startup failures easier to understand for users.
+         */
+        private string format_bluetooth_error (string raw_message) {
+            string msg = raw_message.down ();
+
+            bool bluez_start_timeout =
+                msg.contains ("org.bluez") &&
+                msg.contains ("startservicebyname") &&
+                (
+                    msg.contains ("timed out") ||
+                    msg.contains ("timeout was reached") ||
+                    msg.contains ("service_start_timeout")
+                );
+
+            if (bluez_start_timeout) {
+                return
+                    "Bluetooth could not start. No adapter was detected. " +
+                    "Plug in/enable a Bluetooth adapter, then refresh.";
+            }
+
+            return "Could not query Bluetooth: " + raw_message;
         }
 
         /**
