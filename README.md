@@ -25,7 +25,7 @@ Here's how it works:
 - [x] Fix unlocking not switching to mainscreen.
 - [x] Ignore locking attempts for separate duration after unlock.
 - [o] FOR RELEASE: Rewrite in Vala.
-- [ ] FOR RELEASE: Implement plug patch for bluetooth locking in `Security & Privacy` > `Locking`
+- [o] FOR RELEASE: Implement plug patch for bluetooth locking in `Security & Privacy` > `Locking`
 
 ### Building
 ```sh

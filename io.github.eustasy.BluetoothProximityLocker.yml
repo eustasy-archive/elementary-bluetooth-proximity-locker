@@ -4,7 +4,7 @@ id: io.github.eustasy.BluetoothProximityLocker
 # Use the elementary OS Platform and SDK so we get GTK4, Granite, and all
 # elementary libraries pre-bundled without listing every dependency manually.
 runtime: io.elementary.Platform
-runtime-version: '8'
+runtime-version: '8.2'
 sdk: io.elementary.Sdk
 
 command: io.github.eustasy.BluetoothProximityLocker
