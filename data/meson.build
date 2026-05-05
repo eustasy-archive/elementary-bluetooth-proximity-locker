@@ -6,6 +6,11 @@ install_data(
     install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 
+# Compile installed schemas so the app can read GSettings at runtime
+gnome.post_install(
+    glib_compile_schemas: true
+)
+
 # Compile schemas into the build dir so the app can be run un-installed
 gnome.compile_schemas(
     depend_files: app_id + '.gschema.xml'

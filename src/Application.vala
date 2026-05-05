@@ -29,8 +29,9 @@ namespace BTProx {
         public Application () {
             Object (
                 application_id: "io.github.eustasy.BluetoothProximityLocker",
-                // IS_SERVICE keeps us alive even when all windows are closed.
-                flags: GLib.ApplicationFlags.IS_SERVICE
+                // Normal launches open the UI. Background mode is enabled
+                // explicitly via --gapplication-service (autostart desktop file).
+                flags: GLib.ApplicationFlags.FLAGS_NONE
             );
         }
 

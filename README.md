@@ -1,33 +1,60 @@
 Bluetooth Proximity Locker for elementary OS
 ==============
 
-Lock/unlock your elementary computer based on proximity of bluetooth device (e.g. your phone or tablet).
+Lock or unlock your session based on the connection state of a paired Bluetooth device.
 
-This works for me under elementary OS 0.3 Freya.
+### Quick Start
 
-- First step is to pair your device with your computer.
-- Then get the devices address from System Settings > Bluetooth, or by running `bluez-test-device list` in the terminal.
-- Then configure the script to run in the background at system startup (TODO)
+Build and install the Flatpak:
 
-Here's how it works:
+```sh
+flatpak-builder build io.github.eustasy.BluetoothProximityLocker.yml --user --install --force-clean
+```
 
-1. The script pings the bluetooth device.
-2. When the device moves out of range of the computer, the pings fail and the screen will lock.
-3. Once the device is out of range, the script pings every second attempting to find the device again.
-4. As soon as it pings successfully (you're back in range) the screen will automatically unlock again.
+Open the settings window (normal app launch):
 
-### References
-- [BlueProximity](https://launchpad.net/blueproximity)
-- [Modifying BlueProximity to work on Ubuntu 14.04 LTS](http://www.mljenkins.com/2016/01/24/blueproximity-on-ubuntu-14-04-lts/)
+```sh
+flatpak run io.github.eustasy.BluetoothProximityLocker
+```
 
-### Roadmap
-- [x] Fix slow locking on Freya.
-- [x] Fix unlocking not switching to mainscreen.
-- [x] Ignore locking attempts for separate duration after unlock.
-- [o] FOR RELEASE: Rewrite in Vala.
-- [o] FOR RELEASE: Implement plug patch for bluetooth locking in `Security & Privacy` > `Locking`
+Run in background service mode (no UI window):
 
-### Building
+```sh
+flatpak run io.github.eustasy.BluetoothProximityLocker --gapplication-service
+```
+
+### Setup
+
+1. Pair your phone/tablet in system Bluetooth settings.
+2. Launch the app in UI mode.
+3. Select the paired device to monitor from the list.
+4. Keep the service running (autostart uses service mode automatically).
+
+### How It Works
+
+1. On startup, the app reads the configured device address from GSettings.
+2. It watches BlueZ device state over D-Bus.
+3. When the monitored device disconnects, it requests a session lock.
+4. When the device reconnects, it requests an unlock.
+
+### Run Modes
+
+- UI mode: opens the settings window.
+- Service mode: starts monitoring without opening a window.
+
+Autostart uses service mode so login does not pop up the settings window.
+
+### Troubleshooting
+
+- If you see `Unable to acquire bus name 'io.github.eustasy.BluetoothProximityLocker'`, another instance is already running:
+
+```sh
+flatpak kill io.github.eustasy.BluetoothProximityLocker
+flatpak run io.github.eustasy.BluetoothProximityLocker
+```
+
+- If you see `Settings schema 'io.github.eustasy.BluetoothProximityLocker' is not installed`, rebuild and reinstall:
+
 ```sh
 flatpak-builder build io.github.eustasy.BluetoothProximityLocker.yml --user --install --force-clean
 ```
