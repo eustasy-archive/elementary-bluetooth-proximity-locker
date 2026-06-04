@@ -2,6 +2,8 @@
 
 ### Copyright © 2026 [Lewis Goddard](https://lewisgoddard.me.uk/) & [John Watson](mailto:john@watson-net.com)
 
+_Based on work originally done in [jotson/bluetooth-lock](https://github.com/jotson/bluetooth-lock)_
+
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
 the Software without restriction, including without limitation the rights to
